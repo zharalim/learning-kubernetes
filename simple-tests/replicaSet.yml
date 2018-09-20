@@ -1,0 +1,29 @@
+---
+
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata: 
+  name: kubia
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubia
+  template:
+    metadata: 
+      #name: kubia
+      labels:
+        env: prod
+        app: kubia
+    spec:
+      containers:
+        - image: luksa/kubia
+          name: kubia
+          ports: 
+            - containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: / 
+              port: 8080
+
