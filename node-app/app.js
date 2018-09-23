@@ -23,7 +23,7 @@ server.get('/time', (req, reqRes, next) => {
 
     console.log('Got time request')
     pool.query('SELECT NOW() as now').then(res => {
-        reqRes.status(200).send(`${os.hostname()}: time ${res.rows[0]}`)
+        reqRes.status(200).send(`${os.hostname()}: time ${res.rows[0].now}`)
     }).catch(next)
 
 });
