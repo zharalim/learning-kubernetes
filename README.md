@@ -11,4 +11,5 @@ Repo for learning how to use Kubernetes and Helm charts with the help of Kuberne
 1. `kubectl create serviceaccount --namespace kube-system tiller`
 1. `kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller`
 1. `helm init --service-account tiller`
-1. Create resources with `helm install --name test -f secrets.yml node-app-helm`
+1. Install with `helm install --name test -f secrets.yml node-app-helm`
+1. Upgrade with `helm upgrade test -f secrets.yml ./node-app-helm` 
