@@ -9,5 +9,4 @@ nodeApp:
   port: 8888
 
 postgres:
-  dbName: database
-  port: 5432
+  dbName: node-app

@@ -1,0 +1,6 @@
+---
+
+appVersion: '10.4'
+
+dbName: database
+port: 5432

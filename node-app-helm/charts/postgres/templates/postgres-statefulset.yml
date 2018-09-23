@@ -17,11 +17,11 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:10.4
+          image: postgres:{{ .Values.appVersion }}
           imagePullPolicy: IfNotPresent
           ports:
             - name: psql
-              port: {{ .Values.postgres.port }} 
+              port: {{ .Values.port }} 
               containerPort: 5432 
           env:
             - name: POSTGRES_USER
@@ -35,7 +35,7 @@ spec:
                   name: postgres-credentials
                   key: password
             - name: POSTGRES_DB
-              key: {{ .Values.postgres.dbName }}
+              key: {{ .Values.dbName }}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgres-pv-claim
