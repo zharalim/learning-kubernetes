@@ -1,0 +1,13 @@
+---
+
+apiVersion: v1
+kind: Service
+metadata: 
+  name: node
+spec:
+  ports:
+    - port: {{ .Values.nodeApp.port }}
+      targetPort: {{ .Values.nodeApp.port }}
+  selector:
+    app: node
+    

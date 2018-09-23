@@ -1,0 +1,13 @@
+---
+
+appVersion: "latest"
+
+# Docker registry to use
+#imageRegistry: 
+
+nodeApp:
+  port: 8888
+
+postgres:
+  dbName: database
+  port: 5432
