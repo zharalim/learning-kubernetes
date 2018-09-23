@@ -1,0 +1,14 @@
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-test-node-server"
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+  - name: {{ .Release.Name }}-test-node
+    image: node:8.12.0
+    command: ['sh', '-c', "curl http://${NODE_SERVICE_HOST}:${NODE_SERVICE_PORT}"]
+  restartPolicy: Never
