@@ -2,5 +2,8 @@
 
 appVersion: '10.4'
 
-dbName: database
 port: 5432
+
+#dbName: 
+#dbUsername: 
+#dbPassword:

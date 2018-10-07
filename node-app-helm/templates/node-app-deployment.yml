@@ -18,11 +18,15 @@ spec:
     spec:
       containers:
         - name: node-app
-          image: {{ .Values.imageRegistry }}/node-app:{{ .Values.appVersion }}
+          image: '{{ .Values.imageRegistry }}/node-app:{{ .Values.appVersion }}'
           ports:
             - port: {{ .Values.nodeApp.port }}
               containerPort: {{ .Values.nodeApp.port }}
           livenessProbe:
+            httpGet:
+              path: / 
+              port: {{ .Values.nodeApp.port }}
+          readinessProbe:
             httpGet:
               path: / 
               port: {{ .Values.nodeApp.port }}

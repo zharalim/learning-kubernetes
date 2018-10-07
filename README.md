@@ -13,6 +13,32 @@ Repo for learning how to use Kubernetes and Helm charts with the help of Kuberne
 1. `helm init --service-account tiller`
 1. Install with `helm install --name test -f secrets.yml node-app-helm`
 
-After changes upgrade with `helm upgrade test -f secrets.yml ./node-app-helm` 
+Try db connection:
 
-Run tests with `helm test --cleanup test` 
+1. Get pods `kubectl get po -o wide`
+1. `kubectl port-forward <pod id> 8888:8888`
+1. From another shell run `curl localhost:8888`
+
+## Commands 
+
+- After changes upgrade with `helm upgrade test -f secrets.yml ./node-app-helm` 
+- Run tests with `helm test --cleanup test` 
+- Delete chart with `helm delete test --purge` 
+- See why pod initialization fails `kubectl describe po <pod id>` 
+- List pods `kubectl get po` 
+
+## Tests
+
+### Test node network failure
+
+1. Get a list of your nodes `gcloud compute instances list`
+1. ssh to a kube node `gcloud compute ssh <node name>` 
+1. `ifconfig eth0 down`
+1. `gcloud compute instances reset <node>`
+
+Notes
+
+- Templating doesn't work inside values.yml files. Maybe in helm 3.
+- Subchart config overrides are done by using the chart name from the yaml file, not the folder name.
+- Disruptions https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#voluntary-and-involuntary-disruptions
+- Resource handling on nodes https://kubernetes.io/docs/tasks/administer-cluster/out-of-resource/

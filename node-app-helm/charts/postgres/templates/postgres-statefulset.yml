@@ -35,7 +35,7 @@ spec:
                   name: postgres-credentials
                   key: password
             - name: POSTGRES_DB
-              key: {{ .Values.dbName }}
+              key: {{ required "dbName must be defined" .Values.dbName }}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgres-pv-claim

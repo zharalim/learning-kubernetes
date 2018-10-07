@@ -28,4 +28,7 @@ server.get('/time', (req, reqRes, next) => {
 
 });
 
-server.get('/', (req, res) => res.status(200).send('hello'));
+server.get('/', (req, res) => {
+    console.log('Got request')
+    res.status(200).send('hello')
+});
